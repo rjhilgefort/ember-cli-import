@@ -1,0 +1,30 @@
+{
+  "name": "ember-cli-import",
+  "version": "0.0.1",
+  "description": "An ember-cli import wrapper/helper",
+  "main": "ember-cli-import.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rjhilgefort/ember-cli-import.git"
+  },
+  "keywords": [
+    "ember",
+    "cli",
+    "wrapper",
+    "helper",
+    "import",
+    "bower"
+  ],
+  "author": "Rob Hilgefort <rjhilgefort@gmail.com> (http://rob.hilgefort.me)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rjhilgefort/ember-cli-import/issues"
+  },
+  "homepage": "https://github.com/rjhilgefort/ember-cli-import#readme",
+  "devDependencies": {
+    "lodash": "^3.10.1"
+  }
+}
