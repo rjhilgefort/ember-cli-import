@@ -57,11 +57,10 @@ CliImport.prototype.bowerDevProd = function(dep, options) {
 
 CliImport.prototype.bowerFont = function(font, options) {
   var extensions = ['eot', 'svg', 'ttf', 'woff', 'woff2'];
-  var self = this;
   _.forEach(extensions, function(extension) {
     try {
       fs.accessSync(this.app.bowerDirectory + font + '.' + extension, fs.R_OK)
-      self.bower(font + '.' + extension, options);
+      this.bower(font + '.' + extension, options);
     }
     catch(err) {}
   }, this)
