@@ -1,4 +1,5 @@
 var _ = require('lodash');
+fs = require('fs');
 
 module.exports = CliImport;
 
@@ -57,8 +58,11 @@ CliImport.prototype.bowerDevProd = function(dep, options) {
 CliImport.prototype.bowerFont = function(font, options) {
   var extensions = ['eot', 'svg', 'ttf', 'woff', 'woff2'];
   _.forEach(extensions, function(extension) {
-    this.bower(font + '.' + extension, options);
-  }, this)
+    try {
+      fs.accessSync(this.app.bowerDirectory + font + '.' + extension, fs.R_OK)
+      this.bower(font + '.' + extension, options);
+    } catch(err) {}
+  }, this);
 };
 
 
