@@ -61,9 +61,8 @@ CliImport.prototype.bowerFont = function(font, options) {
     try {
       fs.accessSync(this.app.bowerDirectory + font + '.' + extension, fs.R_OK)
       this.bower(font + '.' + extension, options);
-    }
-    catch(err) {}
-  }, this)
+    } catch(err) {}
+  }, this);
 };
 
 
