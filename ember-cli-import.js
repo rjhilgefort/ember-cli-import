@@ -57,12 +57,15 @@ CliImport.prototype.bowerDevProd = function(dep, options) {
 
 CliImport.prototype.bowerFont = function(font, options) {
   var extensions = ['eot', 'svg', 'ttf', 'woff', 'woff2'];
-  _.forEach(extensions, function(extension) {
+
+  _.forEach(extensions, _.bind(function(extension) {
     try {
-      fs.accessSync(this.app.bowerDirectory + font + '.' + extension, fs.R_OK)
+      fs.accessSync(this.app.bowerDirectory + ensureSlash(font) + '.' + extension, fs.R_OK)
       this.bower(font + '.' + extension, options);
-    } catch(err) {}
-  }, this);
+    } catch(err) {
+      if (err.code === 'EACCES') throw(new Error(err.path + ' found but unable to access can not import'));
+    }
+  }, this));
 };
 
 
