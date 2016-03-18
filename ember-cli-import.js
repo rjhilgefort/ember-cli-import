@@ -68,6 +68,17 @@ CliImport.prototype.bowerFont = function(font, options) {
   }, this));
 };
 
+// ================================================================================
+// npm shortcuts
+// ================================================================================
+
+CliImport.prototype.npm = function(dep, options) {
+  this.dep(this.app.nodeModulesPath + ensureSlash(dep), options);
+};
+
+CliImport.prototype.npmDevProd = function(dep, options) {
+  this.depDevProd(this.app.nodeModulesPath + ensureSlash(dep), options);
+};
 
 // ================================================================================
 // Utility methods

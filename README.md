@@ -22,15 +22,21 @@ module.exports = function(defaults) {
   // Create an instance of this project with the ember app instance
   var cliImport = new CliImport(app);
 
-  // Example icons import
-  cliImport.bower('/some-icons-package/css/some-icons-package.css');
-  cliImport.bowerFont('/some-icons-package/font/some-icons-package-regular-webfont',  { destDir: 'font' })
-
   // Simple example of including a bower component
   cliImport.bower('/some-bower-package/package.js');
 
   // Simple example of including both 'development' and 'production' versions of a bower component
   cliImport.bowerDevProd('/another-bower-package/dist/another-bower-package.js');
+
+  // Example icons import out of bower
+  cliImport.bower('/some-icons-package/css/some-icons-package.css');
+  cliImport.bowerFont('/some-icons-package/font/some-icons-package-regular-webfont',  { destDir: 'font' })
+
+  // Simple example of including a bower component
+  cliImport.npm('/some-npm-module/package.js');
+
+  // Simple example of including both 'development' and 'production' versions of a bower component
+  cliImport.npmDevProd('/another-npm-module/dist/another-npm-module.js');
 
   return app.toTree();
 };
