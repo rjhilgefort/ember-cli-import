@@ -33,12 +33,15 @@ module.exports = function(defaults) {
   cliImport.bower('/some-icons-package/css/some-icons-package.css');
   cliImport.bowerFont('/some-icons-package/font/some-icons-package-regular-webfont',  { destDir: 'font' })
 
-  // Simple example of including a bower component
+  // WIP
+  // -------------------------------------------------------------------------------------
+  // Simple example of including an npm package
   cliImport.npm('/some-npm-module/package.js');
 
   // Simple example of including both 'development' and 'production' versions of a node module.
   // This assumes that there is a `*.min.js` in the same directory.
   cliImport.npmDevProd('/another-npm-module/dist/another-npm-modeule.js');
+  // -------------------------------------------------------------------------------------
 
   return app.toTree();
 };
@@ -47,4 +50,7 @@ module.exports = function(defaults) {
 ## TODO
 
 - Formally document the methods in this `README`.
+- Finish work to allow importing from `node_modules`;
+  - https://github.com/ember-cli/ember-cli/issues/1072
+  - https://github.com/dfreeman/ember-cli-node-assets
 - Remove the need for `bowerDevProd` and `npmDevProd` by merging with `bower` and `npm`. The merged method would inteligently scan for the minified version on the library.
