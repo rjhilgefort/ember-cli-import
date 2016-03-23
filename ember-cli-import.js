@@ -61,7 +61,7 @@ CliImport.prototype.bowerFont = function(font, options) {
       fs.accessSync(this._bower + ensureSlash(font) + '.' + extension, fs.R_OK)
       this.bower(font + '.' + extension, options);
     } catch(err) {
-      if (err.code === 'EACCES') throw(new Error(err.path + ' found but unable to access can not import'));
+      if (err.code === 'EACCES') throw new Error(err.path + ' found but unable to access can not import');
     }
   }, this));
 };
@@ -85,9 +85,9 @@ CliImport.prototype.npm = function(dep, options) {
   this.dep(vendorPathFile, options);
 };
 
+// TODO: Implement this.
 CliImport.prototype.npmDevProd = function(dep, options) {
-  return console.error(NO_NPM_MSG);
-  // this.depDevProd(this._npm + ensureSlash(dep), options);
+  throw new Error(NO_NPM_MSG);
 };
 
 // ================================================================================

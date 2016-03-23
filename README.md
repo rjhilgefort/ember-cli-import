@@ -50,4 +50,5 @@ module.exports = function(defaults) {
 ## TODO
 
 - Formally document the methods in this `README`.
+- Implement `npmDevProd`
 - Remove the need for `bowerDevProd` and `npmDevProd` by merging with `bower` and `npm`. The merged method would inteligently scan for the minified version on the library.
