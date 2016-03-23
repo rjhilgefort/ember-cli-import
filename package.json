@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/rjhilgefort/ember-cli-import#readme",
   "devDependencies": {
-    "lodash": "^4.6.1"
+    "lodash": "^4.6.1",
+    "shelljs": "^0.6.0"
   }
 }

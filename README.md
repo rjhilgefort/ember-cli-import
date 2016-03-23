@@ -50,7 +50,4 @@ module.exports = function(defaults) {
 ## TODO
 
 - Formally document the methods in this `README`.
-- Finish work to allow importing from `node_modules`;
-  - https://github.com/ember-cli/ember-cli/issues/1072
-  - https://github.com/dfreeman/ember-cli-node-assets
 - Remove the need for `bowerDevProd` and `npmDevProd` by merging with `bower` and `npm`. The merged method would inteligently scan for the minified version on the library.

@@ -1,5 +1,7 @@
 var fs = require('fs');
+var path = require('path');
 var _ = require('lodash');
+var sh = require('shelljs');
 
 var NO_NPM_MSG = '`CliImport.npm` is still under construction. Please remove the your usage of it';
 
@@ -18,9 +20,8 @@ function CliImport(app) {
 
   this.app = app;
   this._bower = getBowerDir(app);
-  console.log('_bower', this._bower);
   this._npm = getNpmDir(app);
-  console.log('_npm', this._npm);
+  this._vendor = 'vendor';
 };
 
 
@@ -82,8 +83,18 @@ CliImport.prototype.bowerFont = function(font, options) {
 // ================================================================================
 
 CliImport.prototype.npm = function(dep, options) {
-  return console.error(NO_NPM_MSG);
-  // this.dep(this._npm + ensureSlash(dep), options);
+  var depPath, vendorPathFile, vendorPathDir;
+
+  dep = ensureSlash(dep);
+  depPath = path.join(process.cwd(), this._npm, dep);
+  vendorPathFile = path.join('.', this._vendor, dep);
+  vendorPathDir = vendorPathFile.substring(0, vendorPathFile.lastIndexOf('/'));
+
+  // Link the desired node_module to a place in the broccoli tree
+  sh.mkdir('-p', vendorPathDir);
+  sh.ln('-sf', depPath, vendorPathFile);
+
+  this.dep(vendorPathFile, options);
 };
 
 CliImport.prototype.npmDevProd = function(dep, options) {
