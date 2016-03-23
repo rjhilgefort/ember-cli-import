@@ -38,7 +38,6 @@ CliImport.prototype.depDevProd = function(dep, options) {
     development: dep,
     production: getMinifiedDep(dep)
   };
-  console.log(dep);
   this.app.import(dep, options);
 };
 
