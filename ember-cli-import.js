@@ -34,23 +34,12 @@ CliImport.prototype.dep = function(dep, options) {
 };
 
 CliImport.prototype.depDevProd = function(dep, options) {
-  var regexp = /\.[^/.]+$/;
-  var extension = dep.match(regexp);
-
-  if (!_.isArray(extension)) {
-    throw new Error("`dep` is assumed to have an extension (and a '.min' build)");
-  }
-
-  // Grab the extension as a string if found
-  extension = _.first(extension);
-
-  // Get rid of extension now that we have it
-  dep = dep.replace(regexp, '');
-
-  this.app.import({
-    development: dep + extension,
-    production: dep + '.min' + extension
-  });
+  dep = {
+    development: dep,
+    production: getMinifiedDep(dep)
+  };
+  console.log(dep);
+  this.app.import(dep, options);
 };
 
 // ================================================================================
@@ -120,6 +109,23 @@ function removePathToDir(path) {
   if (_.isEmpty(path)) return;
 
   return path;
+}
+
+function getMinifiedDep(dep) {
+  var minified, regexp, extension;
+
+  // Regex to grab the `dep` extension
+  regexp = /\.[^/.]+$/;
+
+  // Grab the extension as a string if found
+  extension = dep.match(regexp);
+  if (!_.isArray(extension)) throw new Error("`dep` is assumed to have an extension (and a '.min' build)");
+  extension = _.first(extension);
+
+  // Form assumed minified file path
+  minified = dep.replace(regexp, '') + '.min' + extension;
+
+  return minified;
 }
 
 function getNpmDir(app) {
