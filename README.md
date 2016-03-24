@@ -33,11 +33,11 @@ module.exports = function(defaults) {
   cliImport.bower('/some-icons-package/css/some-icons-package.css');
   cliImport.bowerFont('/some-icons-package/font/some-icons-package-regular-webfont',  { destDir: 'font' })
 
-  // WIP
-  // -------------------------------------------------------------------------------------
-  // Simple example of including an npm package
+  // Example of including an npm package
   cliImport.npm('/some-npm-module/package.js');
 
+  // WIP
+  // -------------------------------------------------------------------------------------
   // Simple example of including both 'development' and 'production' versions of a node module.
   // This assumes that there is a `*.min.js` in the same directory.
   cliImport.npmDevProd('/another-npm-module/dist/another-npm-modeule.js');
